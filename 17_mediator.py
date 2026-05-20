@@ -7,7 +7,22 @@
 - 中介者自身膨胀为上帝对象，集中所有交互逻辑。
 - 同事类之间仍偷偷直接引用，模式名存实亡。
 - 简单两方通信也引入中介，增加间接层。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class ChatRoom {
+            -_users
+            +register()
+            +send()
+        }
+        class User {
+            +name
+            +room
+            +send()
+            +receive()
+        }
+        ChatRoom o--> User
+        User --> ChatRoom : mediator"""
 
 
 class ChatRoom:

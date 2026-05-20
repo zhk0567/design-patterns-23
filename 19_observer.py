@@ -7,7 +7,24 @@
 - 观察者更新主题时又修改主题，导致循环通知。
 - 订阅后从不取消，造成内存泄漏（demo_advanced 演示 weakref 清理）。
 - 通知顺序依赖隐式假设，多个观察者相互影响。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Observer { <<abstract>> +update() }
+        class Investor
+        class StockMarket {
+            -_observers
+            +subscribe()
+            +set_price()
+        }
+        class WeakStockMarket {
+            -_observers
+            +subscribe()
+            +set_price()
+        }
+        Observer <|-- Investor
+        StockMarket o--> Observer
+        WeakStockMarket o--> Observer"""
 
 import weakref
 from abc import ABC, abstractmethod

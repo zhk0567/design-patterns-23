@@ -7,7 +7,14 @@
 - 与装饰器混淆：适配器改变接口以兼容；装饰器保持接口并增强行为。
 - 适配层堆积过多业务逻辑，变成「上帝适配器」。
 - 双向适配未理清调用方向，维护困难。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class PaymentGateway { <<abstract>> +pay() }
+        class LegacyPaySDK { +send_money() }
+        class LegacyPayAdapter
+        PaymentGateway <|-- LegacyPayAdapter
+        LegacyPayAdapter --> LegacyPaySDK : adapts"""
 
 from abc import ABC, abstractmethod
 

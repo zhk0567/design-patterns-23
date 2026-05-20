@@ -7,7 +7,20 @@
 - 与简单工厂混为一谈：简单工厂通常是一个函数 if/else 选类型，工厂方法强调子类化创建。
 - 产品类型很少却引入大量工厂子类，过度设计。
 - 客户端仍依赖具体工厂类而非抽象工厂接口。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Logger { <<abstract>> +log() }
+        class ConsoleLogger
+        class FileLogger
+        class LoggerFactory { <<abstract>> +create_logger() +write() }
+        class ConsoleLoggerFactory
+        class FileLoggerFactory
+        Logger <|-- ConsoleLogger
+        Logger <|-- FileLogger
+        LoggerFactory <|-- ConsoleLoggerFactory
+        LoggerFactory <|-- FileLoggerFactory
+        LoggerFactory ..> Logger : creates"""
 
 from abc import ABC, abstractmethod
 

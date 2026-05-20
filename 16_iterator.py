@@ -7,7 +7,20 @@
 - 迭代过程中修改底层集合未做防护（应抛异常或快照）。
 - 对外暴露内部列表引用，破坏封装。
 - 已有 `__iter__` 可简洁实现时仍手写冗长 Iterator 类（本示例为教学目的）。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class BookShelf {
+            -_books
+            +add()
+            +__iter__()
+        }
+        class BookIterator {
+            -_books
+            -_index
+            +__next__()
+        }
+        BookShelf ..> BookIterator : creates"""
 
 from typing import Iterator
 

@@ -7,7 +7,25 @@
 - 备忘录保存整个大文档历史，内存暴涨。
 - 原发器对外暴露过多内部字段，破坏封装。
 - 持久化备忘录未考虑版本迁移与安全（勿 pickle 不可信数据）。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class EditorMemento {
+            +content
+        }
+        class Editor {
+            +content
+            +type()
+            +save()
+            +restore()
+        }
+        class History {
+            -_snapshots
+            +push()
+            +pop()
+        }
+        Editor ..> EditorMemento : save/restore
+        History o--> EditorMemento"""
 
 from dataclasses import dataclass
 

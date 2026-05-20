@@ -7,7 +7,24 @@
 - 链条末端无默认处理，请求静默丢失。
 - 处理器过多且每个都访问数据库，性能链过长。
 - 动态改链顺序未通知调用方，行为不可预测。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Handler { <<abstract>> +handle() +set_next() }
+        class Manager
+        class Director
+        class CEO
+        class DynamicApprovalChain {
+            -_handlers
+            +add_handler()
+            +remove_handler()
+            +handle()
+        }
+        Handler <|-- Manager
+        Handler <|-- Director
+        Handler <|-- CEO
+        Handler --> Handler : next
+        DynamicApprovalChain o--> Handler"""
 
 from abc import ABC, abstractmethod
 

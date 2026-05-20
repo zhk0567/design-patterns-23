@@ -7,7 +7,15 @@
 - 浅拷贝导致嵌套对象被多个实例共享（本示例使用 deepcopy）。
 - 含文件句柄、网络连接等不可克隆资源时直接 copy。
 - 原型注册表过大且从不淘汰，造成内存压力。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Document {
+            +title
+            +content
+            +tags
+            +clone()
+        }"""
 
 import copy
 from dataclasses import dataclass, field

@@ -7,7 +7,25 @@
 - 对象简单、参数少时仍引入 Builder，样板代码过多。
 - 建造步骤无顺序约束却分散在多处，易出现非法中间状态。
 - 与构造函数可选参数堆砌仅换了一种复杂形式。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class HttpRequest {
+            +method
+            +url
+            +headers
+            +body
+            +describe()
+        }
+        class HttpRequestBuilder {
+            -_request
+            +method()
+            +url()
+            +header()
+            +body()
+            +build()
+        }
+        HttpRequestBuilder ..> HttpRequest : builds"""
 
 from dataclasses import dataclass, field
 

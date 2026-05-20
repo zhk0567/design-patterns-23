@@ -7,7 +7,19 @@
 - 多线程下未加锁可能创建多个实例（见 demo_basic 与非线程安全版对比）。
 - 把单例当作全局变量垃圾桶，导致隐式耦合与难以测试。
 - 在不需要唯一实例时强行使用，增加复杂度。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class AppConfig {
+            -_instance$
+            -_initialized
+            +theme
+        }
+        class ThreadSafeAppConfig {
+            -_instance$
+            -_lock$
+            +theme
+        }"""
 
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed

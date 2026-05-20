@@ -7,7 +7,26 @@
 - 只需创建单一产品时误用（应优先考虑工厂方法）。
 - 产品族频繁增减导致抽象工厂接口臃肿。
 - 与工厂方法边界不清：抽象工厂管「一族」，工厂方法管「一种」。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Button { <<abstract>> +render() }
+        class TextBox { <<abstract>> +render() }
+        class DarkButton
+        class DarkTextBox
+        class LightButton
+        class LightTextBox
+        class UIFactory { <<abstract>> +create_button() +create_textbox() }
+        class DarkThemeFactory
+        class LightThemeFactory
+        Button <|-- DarkButton
+        Button <|-- LightButton
+        TextBox <|-- DarkTextBox
+        TextBox <|-- LightTextBox
+        UIFactory <|-- DarkThemeFactory
+        UIFactory <|-- LightThemeFactory
+        UIFactory ..> Button
+        UIFactory ..> TextBox"""
 
 from abc import ABC, abstractmethod
 

@@ -7,7 +7,19 @@
 - 仅有一种算法却抽象策略接口，无扩展收益。
 - 客户端必须知晓所有策略类名，违背开闭原则收益减半。
 - 与状态模式混用：若行为由内部状态驱动，优先考虑状态模式。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class SortStrategy { <<abstract>> +sort() }
+        class BubbleSort
+        class QuickSort
+        class Sorter {
+            -_strategy
+            +sort()
+        }
+        SortStrategy <|-- BubbleSort
+        SortStrategy <|-- QuickSort
+        Sorter o--> SortStrategy"""
 
 from abc import ABC, abstractmethod
 

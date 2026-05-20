@@ -7,7 +7,22 @@
 - 状态少、转移简单时用大量状态类，样板过多（可用表驱动或 enum）。
 - 与策略模式混淆：状态通常在内部自动切换；策略常由客户端选择。
 - 非法转移未统一处理，散落在各状态类 if 分支。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class OrderState { <<abstract>> +pay() +ship() }
+        class PendingState
+        class PaidState
+        class ShippedState
+        class Order {
+            +state
+            +pay()
+            +ship()
+        }
+        OrderState <|-- PendingState
+        OrderState <|-- PaidState
+        OrderState <|-- ShippedState
+        Order o--> OrderState"""
 
 from abc import ABC, abstractmethod
 

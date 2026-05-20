@@ -7,7 +7,16 @@
 - 命令对象塞满业务逻辑，违背轻量封装请求的初衷。
 - 撤销栈无界增长，长时间编辑导致内存占用过高。
 - 未保存足够上下文导致 undo 后状态不一致。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Command { <<abstract>> +execute() +undo() }
+        class InsertCommand
+        class TextEditor { +content +insert() +delete() }
+        class CommandHistory { +run() +undo() }
+        Command <|-- InsertCommand
+        InsertCommand --> TextEditor
+        CommandHistory o--> Command"""
 
 from abc import ABC, abstractmethod
 

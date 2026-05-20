@@ -7,7 +7,14 @@
 - 模板步骤依赖子类实现却声明为 abstract 过多，子类负担重。
 - 用继承固定流程导致组合场景难以复用（可考虑 hooks + 组合）。
 - 父类钩子方法默认可空但子类假设已执行某步骤，产生隐含顺序依赖。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class DataExporter { <<abstract>> +export() #build_header() #build_body() +build_footer() }
+        class CsvExporter
+        class JsonExporter
+        DataExporter <|-- CsvExporter
+        DataExporter <|-- JsonExporter"""
 
 from abc import ABC, abstractmethod
 

@@ -7,7 +7,22 @@
 - 把会变化的外在状态（位置、选中态）放进享元内部，导致错误共享。
 - 享元池无上限且不淘汰，内存泄漏式膨胀。
 - 对象数量不多、创建成本极低时引入享元得不偿失。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class GlyphStyle {
+            +font
+            +size
+            +color
+        }
+        class CharacterFlyweight {
+            -_pool$
+            +char
+            +style
+            +get()
+            +render()
+        }
+        CharacterFlyweight --> GlyphStyle"""
 
 from dataclasses import dataclass
 

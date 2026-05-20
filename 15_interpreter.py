@@ -7,7 +7,21 @@
 - 语法复杂、变更频繁时仍手写解释器（应优先考虑解析器生成器或 AST）。
 - 每条规则一个类导致类爆炸，维护困难。
 - 解释执行性能差却用于高频热点路径。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Expression { <<abstract>> +interpret() }
+        class Number
+        class Variable
+        class Add
+        class Subtract
+        class Multiply
+        Expression <|-- Number
+        Expression <|-- Variable
+        Expression <|-- Add
+        Expression <|-- Subtract
+        Expression <|-- Multiply
+        Add o--> Expression : left/right"""
 
 from abc import ABC, abstractmethod
 

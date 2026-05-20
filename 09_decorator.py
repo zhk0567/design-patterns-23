@@ -7,7 +7,19 @@
 - 与 Python `@decorator` 语法糖混为一谈（后者是函数包装，未必是 GoF 装饰器类结构）。
 - 用继承层层子类导致组合爆炸时仍不用装饰器。
 - 装饰顺序影响语义时未文档化（如先打折再加料）。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Coffee { <<abstract>> +cost() +description() }
+        class SimpleCoffee
+        class CoffeeDecorator { <<abstract>> }
+        class Milk
+        class Sugar
+        Coffee <|-- SimpleCoffee
+        Coffee <|-- CoffeeDecorator
+        CoffeeDecorator <|-- Milk
+        CoffeeDecorator <|-- Sugar
+        CoffeeDecorator o--> Coffee : wraps"""
 
 from abc import ABC, abstractmethod
 

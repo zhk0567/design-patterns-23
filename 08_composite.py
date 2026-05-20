@@ -7,7 +7,18 @@
 - 叶子节点实现容器才有的 add/remove，违反接口隔离。
 - 在组合树上执行仅适用于叶子的操作且未做类型检查。
 - 树过深时递归 display/遍历无节制，性能和栈溢出风险。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class FileSystemNode { <<abstract>> +display() }
+        class File
+        class Folder {
+            +children
+            +add()
+        }
+        FileSystemNode <|-- File
+        FileSystemNode <|-- Folder
+        Folder o--> FileSystemNode : contains"""
 
 from abc import ABC, abstractmethod
 

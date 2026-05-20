@@ -7,7 +7,21 @@
 - 门面承担过多业务规则，变成新的上帝类。
 - 客户端绕过门面直接调用子系统，破坏封装意图。
 - 子系统本可独立演进却被门面绑死无法替换。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Inventory { +reserve() }
+        class Payment { +charge() }
+        class Shipping { +ship() }
+        class OrderFacade {
+            -_inventory
+            -_payment
+            -_shipping
+            +place_order()
+        }
+        OrderFacade --> Inventory
+        OrderFacade --> Payment
+        OrderFacade --> Shipping"""
 
 
 class Inventory:

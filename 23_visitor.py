@@ -7,7 +7,25 @@
 - 元素类型经常新增却不愿改所有访问者（违反开闭原则的一侧）。
 - 访问者方法过多，每增加一种操作就要改访问者接口。
 - 元素层次未稳定就引入访问者，双分派复杂度得不偿失。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class FileNode {
+            +name
+            +size
+        }
+        class FolderNode {
+            +name
+            +children
+        }
+        class Visitor { <<abstract>> +visit_file() +visit_folder() }
+        class SizeVisitor
+        class PrintVisitor
+        Visitor <|-- SizeVisitor
+        Visitor <|-- PrintVisitor
+        Visitor ..> FileNode
+        Visitor ..> FolderNode
+        FolderNode o--> FileNode"""
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass

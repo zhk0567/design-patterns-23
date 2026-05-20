@@ -7,7 +7,19 @@
 - 与装饰器职责重叠：代理侧重控制访问；装饰侧重增强功能（实际常需按意图区分）。
 - 虚拟代理未处理并发下重复创建真实对象。
 - 远程代理忽略超时、重试与序列化版本兼容。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class RealImage {
+            +filename
+            +display()
+        }
+        class ImageProxy {
+            -_filename
+            -_real
+            +display()
+        }
+        ImageProxy ..> RealImage : lazy create"""
 
 
 class RealImage:

@@ -7,7 +7,18 @@
 - 仅有一个实现类时仍拆桥接，抽象与实现分离收益不足。
 - 与策略模式混淆：桥接强调抽象维度稳定、实现可替换；策略强调算法互换。
 - 过度拆分导致跳转层次过多，阅读成本高。
-"""
+
+类图 (Mermaid):
+    classDiagram
+        class Renderer { <<abstract>> +render_circle() }
+        class VectorRenderer
+        class RasterRenderer
+        class Shape { <<abstract>> +draw() }
+        class Circle
+        Renderer <|-- VectorRenderer
+        Renderer <|-- RasterRenderer
+        Shape <|-- Circle
+        Shape o--> Renderer : bridge"""
 
 from abc import ABC, abstractmethod
 

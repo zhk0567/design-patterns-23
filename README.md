@@ -91,7 +91,8 @@ design-patterns-23/
 ├── docs/
 │   ├── PATTERNS_COMPARE.md
 │   ├── STDLIB_MAPPING.md
-│   └── STUDY.md
+│   ├── STUDY.md
+│   └── UML.md
 ├── 01_singleton.py
 ├── ...
 └── 23_visitor.py
@@ -106,6 +107,7 @@ design-patterns-23/
 | [docs/PATTERNS_COMPARE.md](docs/PATTERNS_COMPARE.md) | 易混淆模式对比 |
 | [docs/STDLIB_MAPPING.md](docs/STDLIB_MAPPING.md) | 与 Python 标准库对照 |
 | [docs/STUDY.md](docs/STUDY.md) | 学习路径与自测题 |
+| [docs/UML.md](docs/UML.md) | 23 个模式 Mermaid 类图索引 |
 
 ## 说明
 
