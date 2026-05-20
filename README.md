@@ -17,7 +17,26 @@ python 01_singleton.py
 
 # 运行全部 23 个示例
 python run_all.py
+
+# 运行 smoke 测试（标准库 unittest，无需 pytest）
+python test_patterns.py
 ```
+
+## Windows 终端与中文输出
+
+在 Windows PowerShell / CMD 下，若中文乱码或报 `gbk` 编码错误，可先设置 UTF-8 再运行：
+
+```powershell
+$env:PYTHONIOENCODING = "utf-8"
+chcp 65001
+python run_all.py
+```
+
+说明：
+
+- `run_all.py` 会尝试将 stdout/stderr 重配置为 UTF-8。
+- 示例中已避免 `¥`、emoji 等在 GBK 控制台下易出错的字符。
+- 若仅单个文件乱码，同样可先执行 `$env:PYTHONIOENCODING = "utf-8"` 再运行该文件。
 
 ## 模式索引
 
@@ -64,13 +83,29 @@ python run_all.py
 ```
 design-patterns-23/
 ├── README.md
-├── requirements.txt
-├── .gitignore
+├── TASKS.md
+├── CHANGELOG.md
+├── test_patterns.py
 ├── run_all.py
+├── .github/workflows/ci.yml
+├── docs/
+│   ├── PATTERNS_COMPARE.md
+│   ├── STDLIB_MAPPING.md
+│   └── STUDY.md
 ├── 01_singleton.py
 ├── ...
 └── 23_visitor.py
 ```
+
+## 文档
+
+| 文件 | 说明 |
+|------|------|
+| [TASKS.md](TASKS.md) | 后续任务清单 |
+| [CHANGELOG.md](CHANGELOG.md) | 版本变更记录 |
+| [docs/PATTERNS_COMPARE.md](docs/PATTERNS_COMPARE.md) | 易混淆模式对比 |
+| [docs/STDLIB_MAPPING.md](docs/STDLIB_MAPPING.md) | 与 Python 标准库对照 |
+| [docs/STUDY.md](docs/STUDY.md) | 学习路径与自测题 |
 
 ## 说明
 
