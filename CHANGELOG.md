@@ -6,6 +6,10 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
+- Phase 3 enhancements: thread-safe singleton, dynamic approval chain, weakref observer, PrintVisitor, interpreter multiply/subtract; `demo_basic()` / `demo_advanced()` dual entry on affected modules
+
+### Added (earlier)
+
 - Windows UTF-8 notes in README
 - `test_patterns.py` unittest smoke tests for all 23 demos
 - GitHub Actions CI (`.github/workflows/ci.yml`)

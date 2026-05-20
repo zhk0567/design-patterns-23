@@ -43,11 +43,44 @@ class Add(Expression):
         return self._left.interpret(context) + self._right.interpret(context)
 
 
-def demo() -> None:
-    # 表达式: x + 10，其中 x = 5
+class Subtract(Expression):
+    def __init__(self, left: Expression, right: Expression) -> None:
+        self._left = left
+        self._right = right
+
+    def interpret(self, context: dict[str, int]) -> int:
+        return self._left.interpret(context) - self._right.interpret(context)
+
+
+class Multiply(Expression):
+    def __init__(self, left: Expression, right: Expression) -> None:
+        self._left = left
+        self._right = right
+
+    def interpret(self, context: dict[str, int]) -> int:
+        return self._left.interpret(context) * self._right.interpret(context)
+
+
+def demo_basic() -> None:
     expr = Add(Variable("x"), Number(10))
     result = expr.interpret({"x": 5})
-    print(f"[Interpreter] x + 10 = {result} (x=5)")
+    print(f"[Interpreter] basic: x + 10 = {result} (x=5)")
 
-if __name__ == '__main__':
+
+def demo_advanced() -> None:
+    # (x + 10) * 2 - 3, x = 5 -> 27
+    expr = Subtract(
+        Multiply(Add(Variable("x"), Number(10)), Number(2)),
+        Number(3),
+    )
+    result = expr.interpret({"x": 5})
+    print(f"[Interpreter] advanced: (x + 10) * 2 - 3 = {result} (x=5)")
+
+
+def demo() -> None:
+    demo_basic()
+    demo_advanced()
+
+
+if __name__ == "__main__":
     demo()

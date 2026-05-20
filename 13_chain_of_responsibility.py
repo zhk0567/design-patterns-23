@@ -21,36 +21,86 @@ class Handler(ABC):
         return handler
 
     def handle(self, amount: float) -> str | None:
+        result = self._try_handle(amount)
+        if result is not None:
+            return result
         if self._next:
             return self._next.handle(amount)
         return None
 
+    @abstractmethod
+    def _try_handle(self, amount: float) -> str | None:
+        pass
+
 
 class Manager(Handler):
-    def handle(self, amount: float) -> str | None:
+    def _try_handle(self, amount: float) -> str | None:
         if amount <= 1000:
             return f"经理审批通过 {amount} 元"
-        return super().handle(amount)
+        return None
 
 
 class Director(Handler):
-    def handle(self, amount: float) -> str | None:
+    def _try_handle(self, amount: float) -> str | None:
         if amount <= 5000:
             return f"总监审批通过 {amount} 元"
-        return super().handle(amount)
+        return None
 
 
 class CEO(Handler):
-    def handle(self, amount: float) -> str | None:
+    def _try_handle(self, amount: float) -> str | None:
         return f"CEO 特批通过 {amount} 元"
 
 
-def demo() -> None:
+class DynamicApprovalChain:
+    """可运行时增删处理器的责任链。"""
+
+    def __init__(self) -> None:
+        self._handlers: list[Handler] = []
+
+    def add_handler(self, handler: Handler) -> None:
+        self._handlers.append(handler)
+        self._relink()
+
+    def remove_handler(self, handler: Handler) -> None:
+        self._handlers.remove(handler)
+        self._relink()
+
+    def _relink(self) -> None:
+        for i, handler in enumerate(self._handlers):
+            handler._next = self._handlers[i + 1] if i + 1 < len(self._handlers) else None
+
+    def handle(self, amount: float) -> str:
+        if not self._handlers:
+            return "无可用处理器"
+        result = self._handlers[0].handle(amount)
+        return result or "未审批"
+
+
+def demo_basic() -> None:
     chain = Manager()
     chain.set_next(Director()).set_next(CEO())
-    for amount in [500, 3000, 8000]:
-        result = chain.handle(amount)
-        print(f"[ChainOfResponsibility] {amount} 元 -> {result}")
+    for amount in [500, 3000]:
+        print(f"[ChainOfResponsibility] basic {amount} 元 -> {chain.handle(amount)}")
 
-if __name__ == '__main__':
+
+def demo_advanced() -> None:
+    dynamic = DynamicApprovalChain()
+    manager = Manager()
+    director = Director()
+    dynamic.add_handler(manager)
+    dynamic.add_handler(director)
+    print(f"[ChainOfResponsibility] advanced 3000 元 (含总监) -> {dynamic.handle(3000)}")
+    dynamic.remove_handler(director)
+    print(f"[ChainOfResponsibility] advanced 移除总监后 3000 元 -> {dynamic.handle(3000)}")
+    dynamic.add_handler(CEO())
+    print(f"[ChainOfResponsibility] advanced 8000 元 (含 CEO) -> {dynamic.handle(8000)}")
+
+
+def demo() -> None:
+    demo_basic()
+    demo_advanced()
+
+
+if __name__ == "__main__":
     demo()

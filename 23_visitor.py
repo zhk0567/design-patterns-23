@@ -47,6 +47,22 @@ class SizeVisitor(Visitor):
             accept(child, self)
 
 
+class PrintVisitor(Visitor):
+    def __init__(self, indent: int = 0) -> None:
+        self._indent = indent
+
+    def visit_file(self, node: FileNode) -> None:
+        prefix = "  " * self._indent
+        print(f"{prefix}[Visitor] FILE {node.name} ({node.size}B)")
+
+    def visit_folder(self, node: FolderNode) -> None:
+        prefix = "  " * self._indent
+        print(f"{prefix}[Visitor] DIR  {node.name}/")
+        child_visitor = PrintVisitor(self._indent + 1)
+        for child in node.children:
+            accept(child, child_visitor)
+
+
 def accept(node: FileNode | FolderNode, visitor: Visitor) -> None:
     if isinstance(node, FileNode):
         visitor.visit_file(node)
@@ -54,14 +70,30 @@ def accept(node: FileNode | FolderNode, visitor: Visitor) -> None:
         visitor.visit_folder(node)
 
 
-def demo() -> None:
-    tree = FolderNode("root", [
+def build_sample_tree() -> FolderNode:
+    return FolderNode("root", [
         FileNode("a.txt", 100),
         FolderNode("docs", [FileNode("b.txt", 250)]),
     ])
+
+
+def demo_basic() -> None:
+    tree = build_sample_tree()
     visitor = SizeVisitor()
     accept(tree, visitor)
-    print(f"[Visitor] 文件总大小: {visitor.total_size} bytes")
+    print(f"[Visitor] basic: total size = {visitor.total_size} bytes")
 
-if __name__ == '__main__':
+
+def demo_advanced() -> None:
+    tree = build_sample_tree()
+    print("[Visitor] advanced: tree structure:")
+    accept(tree, PrintVisitor())
+
+
+def demo() -> None:
+    demo_basic()
+    demo_advanced()
+
+
+if __name__ == "__main__":
     demo()
