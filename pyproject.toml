@@ -40,11 +40,10 @@ ignore = ["E501"]
 
 [tool.ruff.lint.per-file-ignores]
 "scripts/learn.py" = ["E501"]
-"scripts/generate_cheatsheet.py" = ["E501"]
-"scripts/inject_english_docstrings.py" = ["E501"]
-"run_all.py" = ["F401"]
-"learn.py" = ["F401"]
-"test_patterns.py" = ["F401"]
+"docs/GUIDE.md" = ["E501"]
+"run_all.py" = ["F401", "E402"]
+"learn.py" = ["F401", "E402"]
+"test_patterns.py" = ["F401", "E402"]
 
 [tool.mypy]
 python_version = "3.10"

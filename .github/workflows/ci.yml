@@ -55,8 +55,3 @@ jobs:
 
       - name: Run async demos
         run: python scripts/run_async_demos.py
-
-      - name: Verify cheatsheet is up to date
-        run: |
-          python scripts/generate_cheatsheet.py
-          git diff --exit-code docs/CHEATSHEET.md

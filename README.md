@@ -4,29 +4,21 @@
 
 GoF 23 种经典设计模式的 Python 示例。仅使用标准库，每个模式可单独运行。
 
-[English README](README.en.md) · [PyPI / 本地安装](docs/PYPI.md)
+[English README](README.en.md) · [学习指南](docs/GUIDE.md)
 
 ## 目录结构
 
 ```
 design-patterns-23/
 ├── README.md
-├── TASKS.md
-├── CHANGELOG.md
-├── pyproject.toml
-├── requirements.txt
-├── requirements-dev.txt
-├── patterns/              # 23 个模式示例
-│   ├── 01_singleton.py
-│   └── ...
-├── scripts/               # 运行与工具脚本
-│   ├── run_all.py
-│   ├── learn.py
-│   ├── test_patterns.py
-│   └── ...
-├── examples/              # 反模式等补充示例
-├── patterns/py.typed      # PEP 561 类型标记
-└── docs/                  # 文档与速查表
+├── patterns/              # 23 个模式示例（含中英文 docstring、UML）
+├── scripts/               # 运行与测试脚本
+├── examples/              # 反模式演示
+├── docs/
+│   └── GUIDE.md           # 学习/对比/面试/反模式（唯一扩展文档）
+├── run_all.py             # 快捷入口
+├── learn.py
+└── test_patterns.py
 ```
 
 ## 环境要求
@@ -38,42 +30,28 @@ design-patterns-23/
 ```powershell
 Set-Location f:\commercial\design-patterns-23
 
-# 单个模式
 python patterns/01_singleton.py
-
-# 全部 23 个
 python scripts/run_all.py
-
-# 交互菜单（支持分类筛选、模块名如 12_proxy）
 python scripts/learn.py
-
-# 电商端到端（Facade + State + Observer）
 python scripts/ecommerce_demo.py
-
-# 异步 demo（12 / 14 / 19）
 python scripts/run_async_demos.py
-
-# 反模式
 python examples/99_anti_patterns.py
-
-# 测试
 python scripts/test_patterns.py
 ```
+
+根目录 `python run_all.py` / `python learn.py` 等价于 `scripts/` 下对应脚本。
 
 ## 开发工具
 
 ```powershell
 pip install -r requirements-dev.txt
+pip install -e .
 ruff format .
 ruff check .
 mypy .
-python scripts/generate_cheatsheet.py
-python scripts/test_unit_patterns.py
 ```
 
-根目录仍可使用快捷命令：`python run_all.py`、`python learn.py`。
-
-## Windows 终端与中文输出
+## Windows 中文输出
 
 ```powershell
 $env:PYTHONIOENCODING = "utf-8"
@@ -121,25 +99,8 @@ python scripts/run_all.py
 | 22 | `patterns/22_template_method.py` | Template Method | 模板方法 |
 | 23 | `patterns/23_visitor.py` | Visitor | 访问者 |
 
-## 文档
-
-| 文件 | 说明 |
-|------|------|
-| [TASKS.md](TASKS.md) | 任务清单 |
-| [CHANGELOG.md](CHANGELOG.md) | 变更记录 |
-| [docs/CHEATSHEET.md](docs/CHEATSHEET.md) | 速查表（自动生成） |
-| [docs/UML.md](docs/UML.md) | UML 类图索引 |
-| [docs/ECOMMERCE_SCENARIO.md](docs/ECOMMERCE_SCENARIO.md) | 电商场景对照 |
-| [docs/FRAMEWORK_MAPPING.md](docs/FRAMEWORK_MAPPING.md) | Spring / Django 对照 |
-| [docs/INTERVIEW.md](docs/INTERVIEW.md) | 面试题 |
-| [docs/ANTI_PATTERNS.md](docs/ANTI_PATTERNS.md) | 反模式 |
-| [docs/PATTERN_MAP.md](docs/PATTERN_MAP.md) | 模式关系总图 |
-| [docs/UML_ALL.md](docs/UML_ALL.md) | UML 类图汇总 |
-| [docs/interview_cards.csv](docs/interview_cards.csv) | 面试题闪卡 CSV |
-| [docs/PATTERNS_COMPARE.md](docs/PATTERNS_COMPARE.md) | 模式对比 |
-| [docs/STUDY.md](docs/STUDY.md) | 学习路径 |
-
 ## 说明
 
-- 脚本通过 `patterns.load("01_singleton")` 加载示例模块
-- 每个模式文件含 `demo()`，部分含 `demo_basic()` / `demo_advanced()` / `demo_async()`
+- 扩展阅读、模式对比、电商场景、面试题与反模式见 [docs/GUIDE.md](docs/GUIDE.md)
+- 每个 `patterns/NN_*.py` 含 `demo()`，部分含 `demo_basic()` / `demo_advanced()` / `demo_async()`
+- 加载示例：`from patterns import load` → `load("01_singleton").demo()`

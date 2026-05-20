@@ -1,6 +1,6 @@
 """设计模式相关反模式演示（非 GoF 正例）。
 
-对照 docs/ANTI_PATTERNS.md，展示常见误用及后果。
+对照 docs/GUIDE.md#反模式，展示常见误用及后果。
 """
 
 from __future__ import annotations
