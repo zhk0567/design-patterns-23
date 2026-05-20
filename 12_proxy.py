@@ -21,6 +21,10 @@
         }
         ImageProxy ..> RealImage : lazy create"""
 
+from __future__ import annotations
+
+import asyncio
+
 
 class RealImage:
     def __init__(self, filename: str) -> None:
@@ -47,6 +51,30 @@ class ImageProxy:
             print(f"[Proxy] 首次访问，创建 RealImage('{self._filename}')")
             self._real = RealImage(self._filename)
         return self._real.display()
+
+
+class AsyncImageProxy:
+    """异步虚拟代理：模拟 IO 加载。"""
+
+    def __init__(self, filename: str) -> None:
+        self._filename = filename
+        self._real: RealImage | None = None
+        self._lock = asyncio.Lock()
+
+    async def display(self) -> str:
+        if self._real is None:
+            async with self._lock:
+                if self._real is None:
+                    print(f"[Proxy] async 加载 {self._filename} ...")
+                    await asyncio.sleep(0.05)
+                    self._real = RealImage(self._filename)
+        return self._real.display()
+
+
+async def demo_async() -> None:
+    proxy = AsyncImageProxy("order-invoice.pdf")
+    results = await asyncio.gather(proxy.display(), proxy.display())
+    print(f"[Proxy] async: {results[0]}")
 
 
 def demo() -> None:

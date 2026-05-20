@@ -39,6 +39,9 @@ jobs:
       - name: Run all demos
         run: python run_all.py
 
+      - name: Run async demos
+        run: python run_async_demos.py
+
       - name: Verify cheatsheet is up to date
         run: |
           python generate_cheatsheet.py

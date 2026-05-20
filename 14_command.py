@@ -18,7 +18,11 @@
         InsertCommand --> TextEditor
         CommandHistory o--> Command"""
 
+from __future__ import annotations
+
+import asyncio
 from abc import ABC, abstractmethod
+from collections import deque
 
 
 class Command(ABC):
@@ -65,6 +69,32 @@ class CommandHistory:
     def undo(self) -> None:
         if self._commands:
             self._commands.pop().undo()
+
+
+class AsyncCommandQueue:
+    """异步命令队列：顺序执行封装的操作。"""
+
+    def __init__(self) -> None:
+        self._queue: deque[Command] = deque()
+
+    def enqueue(self, command: Command) -> None:
+        self._queue.append(command)
+
+    async def run_all(self) -> None:
+        while self._queue:
+            cmd = self._queue.popleft()
+            await asyncio.sleep(0)
+            cmd.execute()
+            print(f"[Command] async executed {cmd.__class__.__name__}")
+
+
+async def demo_async() -> None:
+    editor = TextEditor()
+    queue = AsyncCommandQueue()
+    queue.enqueue(InsertCommand(editor, "async-"))
+    queue.enqueue(InsertCommand(editor, "order"))
+    await queue.run_all()
+    print(f"[Command] async content: {editor.content!r}")
 
 
 def demo() -> None:

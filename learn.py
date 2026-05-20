@@ -49,11 +49,30 @@ def _print_menu() -> None:
     for i, (mod, en, zh) in enumerate(PATTERN_META, start=1):
         print(f"  {i:2}. {mod:32} {zh} ({en})")
     print("   0. 退出")
-    print("  all. 运行全部 demo()")
+    print("  all.  运行全部 demo()")
+    print("  async. 运行异步 demo_async() (12/14/19)")
     print("=" * 50)
 
 
+async def _run_module_async(name: str, mode: str) -> None:
+
+    module = importlib.import_module(name)
+    if mode == "async" and hasattr(module, "demo_async"):
+        await module.demo_async()
+    elif mode == "basic" and hasattr(module, "demo_basic"):
+        module.demo_basic()
+    elif mode == "advanced" and hasattr(module, "demo_advanced"):
+        module.demo_advanced()
+    else:
+        module.demo()
+
+
 def _run_module(name: str, mode: str) -> None:
+    if mode == "async":
+        import asyncio
+
+        asyncio.run(_run_module_async(name, mode))
+        return
     module = importlib.import_module(name)
     if mode == "basic" and hasattr(module, "demo_basic"):
         module.demo_basic()
@@ -67,11 +86,16 @@ def _pick_mode(name: str) -> str:
     module = importlib.import_module(name)
     has_basic = hasattr(module, "demo_basic")
     has_advanced = hasattr(module, "demo_advanced")
-    if not (has_basic or has_advanced):
+    has_async = hasattr(module, "demo_async")
+    if not (has_basic or has_advanced or has_async):
         return "demo"
-    print("  运行模式: [1] demo  [2] demo_basic  [3] demo_advanced")
+    opts = "[1] demo  [2] demo_basic  [3] demo_advanced"
+    if has_async:
+        opts += "  [4] demo_async"
+    print(f"  运行模式: {opts}")
     choice = input("  选择 (默认 1): ").strip() or "1"
-    return {"1": "demo", "2": "basic", "3": "advanced"}.get(choice, "demo")
+    mapping = {"1": "demo", "2": "basic", "3": "advanced", "4": "async"}
+    return mapping.get(choice, "demo")
 
 
 def main() -> int:
@@ -81,7 +105,7 @@ def main() -> int:
 
     while True:
         _print_menu()
-        raw = input("请输入编号 (1-23) / all / 0: ").strip().lower()
+        raw = input("请输入编号 (1-23) / all / async / 0: ").strip().lower()
         if raw in ("0", "q", "quit", "exit"):
             print("再见。")
             return 0
@@ -89,6 +113,10 @@ def main() -> int:
             import run_all
 
             return run_all.main()
+        if raw == "async":
+            import run_async_demos
+
+            return run_async_demos.main()
         try:
             idx = int(raw)
             if idx < 1 or idx > len(PATTERN_META):

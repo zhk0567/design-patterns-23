@@ -26,6 +26,9 @@
         StockMarket o--> Observer
         WeakStockMarket o--> Observer"""
 
+from __future__ import annotations
+
+import asyncio
 import weakref
 from abc import ABC, abstractmethod
 
@@ -79,6 +82,42 @@ class Investor(Observer):
 
     def update(self, symbol: str, price: float) -> None:
         print(f"[Observer] {self.name} 收到 {symbol} 报价: {price:.2f} 元")
+
+
+class AsyncOrderBus:
+    """异步发布订单状态：并发通知所有订阅者。"""
+
+    def __init__(self) -> None:
+        self._handlers: list = []
+
+    def subscribe(self, handler) -> None:
+        self._handlers.append(handler)
+
+    async def publish(self, order_id: str, status: str) -> None:
+        async def _notify(h) -> None:
+            if asyncio.iscoroutinefunction(h):
+                await h(order_id, status)
+            else:
+                await asyncio.to_thread(h, order_id, status)
+
+        await asyncio.gather(*(_notify(h) for h in self._handlers))
+
+
+async def _sms_notifier(order_id: str, status: str) -> None:
+    await asyncio.sleep(0.02)
+    print(f"[Observer] async SMS: 订单 {order_id} -> {status}")
+
+
+async def _email_notifier(order_id: str, status: str) -> None:
+    await asyncio.sleep(0.02)
+    print(f"[Observer] async Email: 订单 {order_id} -> {status}")
+
+
+async def demo_async() -> None:
+    bus = AsyncOrderBus()
+    bus.subscribe(_sms_notifier)
+    bus.subscribe(_email_notifier)
+    await bus.publish("ORD-1001", "已发货")
 
 
 def demo_basic() -> None:

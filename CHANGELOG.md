@@ -6,6 +6,8 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
+- Phase 5: ecommerce scenario doc, framework mapping, interview Q&A, anti-patterns (`99_anti_patterns.py`)
+- Async demos: `demo_async()` on proxy/command/observer, `run_async_demos.py`
 - Phase 4 tooling: `pyproject.toml`, `requirements-dev.txt`, `learn.py`, `generate_cheatsheet.py`, `docs/CHEATSHEET.md`
 - CI: ruff format/lint, mypy, cheatsheet drift check
 - Mermaid UML class diagrams in all 23 pattern module docstrings; `docs/UML.md` index

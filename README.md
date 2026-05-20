@@ -21,6 +21,12 @@ python run_all.py
 # 交互式选择模式运行
 python learn.py
 
+# 异步 demo（代理 / 命令 / 观察者）
+python run_async_demos.py
+
+# 反模式演示
+python 99_anti_patterns.py
+
 # 运行 smoke 测试（标准库 unittest，无需 pytest）
 python test_patterns.py
 ```
@@ -101,6 +107,8 @@ design-patterns-23/
 ├── CHANGELOG.md
 ├── test_patterns.py
 ├── learn.py
+├── run_async_demos.py
+├── 99_anti_patterns.py
 ├── generate_cheatsheet.py
 ├── pyproject.toml
 ├── run_all.py
@@ -110,7 +118,11 @@ design-patterns-23/
 │   ├── STDLIB_MAPPING.md
 │   ├── STUDY.md
 │   ├── UML.md
-│   └── CHEATSHEET.md
+│   ├── CHEATSHEET.md
+│   ├── ECOMMERCE_SCENARIO.md
+│   ├── FRAMEWORK_MAPPING.md
+│   ├── INTERVIEW.md
+│   └── ANTI_PATTERNS.md
 ├── 01_singleton.py
 ├── ...
 └── 23_visitor.py
@@ -127,6 +139,10 @@ design-patterns-23/
 | [docs/STUDY.md](docs/STUDY.md) | 学习路径与自测题 |
 | [docs/UML.md](docs/UML.md) | 23 个模式 Mermaid 类图索引 |
 | [docs/CHEATSHEET.md](docs/CHEATSHEET.md) | 模式速查表（自动生成） |
+| [docs/ECOMMERCE_SCENARIO.md](docs/ECOMMERCE_SCENARIO.md) | 23 模式 × 电商订单场景 |
+| [docs/FRAMEWORK_MAPPING.md](docs/FRAMEWORK_MAPPING.md) | Spring / Django 对照 |
+| [docs/INTERVIEW.md](docs/INTERVIEW.md) | 面试题与参考答案 |
+| [docs/ANTI_PATTERNS.md](docs/ANTI_PATTERNS.md) | 反模式说明 |
 
 ## 说明
 
