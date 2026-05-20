@@ -22,7 +22,7 @@
         }
         BookShelf ..> BookIterator : creates"""
 
-from typing import Iterator
+from collections.abc import Iterator
 
 
 class BookShelf:
@@ -60,5 +60,6 @@ def demo() -> None:
     for book in shelf:
         print(f"  - {book}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

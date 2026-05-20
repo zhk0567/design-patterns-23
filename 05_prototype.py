@@ -41,5 +41,6 @@ def demo() -> None:
     print(f"[Prototype] draft.title: {draft.title}, tags: {draft.tags}")
     print(f"[Prototype] 深拷贝独立: {original.tags is not draft.tags}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

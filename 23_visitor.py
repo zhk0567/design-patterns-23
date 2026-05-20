@@ -89,10 +89,13 @@ def accept(node: FileNode | FolderNode, visitor: Visitor) -> None:
 
 
 def build_sample_tree() -> FolderNode:
-    return FolderNode("root", [
-        FileNode("a.txt", 100),
-        FolderNode("docs", [FileNode("b.txt", 250)]),
-    ])
+    return FolderNode(
+        "root",
+        [
+            FileNode("a.txt", 100),
+            FolderNode("docs", [FileNode("b.txt", 250)]),
+        ],
+    )
 
 
 def demo_basic() -> None:

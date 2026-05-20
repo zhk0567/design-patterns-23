@@ -90,13 +90,15 @@ class LightThemeFactory(UIFactory):
 
 
 def paint_screen(factory: UIFactory) -> None:
-    print(f"[AbstractFactory] {factory.create_button().render()}, "
-          f"{factory.create_textbox().render()}")
+    print(
+        f"[AbstractFactory] {factory.create_button().render()}, {factory.create_textbox().render()}"
+    )
 
 
 def demo() -> None:
     paint_screen(DarkThemeFactory())
     paint_screen(LightThemeFactory())
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

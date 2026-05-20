@@ -52,6 +52,7 @@ class JsonExporter(DataExporter):
 
     def build_body(self, rows: list[dict]) -> str:
         import json
+
         return ",\n".join(json.dumps(r, ensure_ascii=False) for r in rows)
 
     def build_footer(self) -> str:

@@ -62,5 +62,6 @@ def demo() -> None:
         circle = Circle(renderer, 5)
         print(f"[Bridge] {circle.draw()}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

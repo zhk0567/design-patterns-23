@@ -65,5 +65,6 @@ def demo() -> None:
     for factory in factories:
         print(factory.write("用户登录成功"))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

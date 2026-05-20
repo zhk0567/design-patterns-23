@@ -58,5 +58,6 @@ class OrderFacade:
 def demo() -> None:
     OrderFacade().place_order("A001", 199.0, "上海市浦东新区")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

@@ -21,19 +21,24 @@
             +theme
         }"""
 
+from __future__ import annotations
+
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import ClassVar
 
 
 class AppConfig:
     """非线程安全单例（教学对比用）。"""
 
-    _instance = None
+    _instance: ClassVar[AppConfig | None] = None
+    _initialized: bool
 
-    def __new__(cls):
+    def __new__(cls) -> AppConfig:
         if cls._instance is None:
-            cls._instance = super().__new__(cls)
-            cls._instance._initialized = False
+            obj = super().__new__(cls)
+            obj._initialized = False
+            cls._instance = obj
         return cls._instance
 
     def __init__(self) -> None:
@@ -46,10 +51,11 @@ class AppConfig:
 class ThreadSafeAppConfig:
     """双重检查锁定（DCL）线程安全单例。"""
 
-    _instance = None
-    _lock = threading.Lock()
+    _instance: ClassVar[ThreadSafeAppConfig | None] = None
+    _lock: ClassVar[threading.Lock] = threading.Lock()
+    _initialized: bool
 
-    def __new__(cls):
+    def __new__(cls) -> ThreadSafeAppConfig:
         if cls._instance is None:
             with cls._lock:
                 if cls._instance is None:

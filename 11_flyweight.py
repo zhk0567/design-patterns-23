@@ -60,5 +60,6 @@ def demo() -> None:
         print(f"[Flyweight] {g.render(i)}")
     print(f"[Flyweight] 池大小: {len(CharacterFlyweight._pool)} (5 个字符复用 4 个享元，'l' 重复)")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

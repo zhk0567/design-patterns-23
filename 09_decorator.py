@@ -73,5 +73,6 @@ def demo() -> None:
     coffee: Coffee = Sugar(Milk(SimpleCoffee()))
     print(f"[Decorator] {coffee.description()} = {coffee.cost():.1f} 元")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

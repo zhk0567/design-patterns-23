@@ -80,5 +80,6 @@ def demo() -> None:
     print(f"[State] {order.ship()}")
     print(f"[State] {order.pay()}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

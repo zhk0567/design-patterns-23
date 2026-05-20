@@ -27,7 +27,7 @@
 
 class ChatRoom:
     def __init__(self) -> None:
-        self._users: dict[str, "User"] = {}
+        self._users: dict[str, User] = {}
 
     def register(self, user: "User") -> None:
         self._users[user.name] = user
@@ -61,5 +61,6 @@ def demo() -> None:
     room.register(bob)
     alice.send("大家好！")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

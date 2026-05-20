@@ -45,5 +45,6 @@ def demo() -> None:
     gateway: PaymentGateway = LegacyPayAdapter(LegacyPaySDK())
     print(f"[Adapter] {gateway.pay(128.5)}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

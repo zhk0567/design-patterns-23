@@ -66,5 +66,6 @@ def demo() -> None:
         result = Sorter(strategy).sort(data)
         print(f"[Strategy] {name}: {result}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

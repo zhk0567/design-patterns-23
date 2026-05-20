@@ -72,5 +72,6 @@ def demo() -> None:
         editor.restore(memento)
     print(f"[Memento] 恢复后:\n{editor.content}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

@@ -18,8 +18,22 @@ python 01_singleton.py
 # 运行全部 23 个示例
 python run_all.py
 
+# 交互式选择模式运行
+python learn.py
+
 # 运行 smoke 测试（标准库 unittest，无需 pytest）
 python test_patterns.py
+```
+
+## 开发工具（阶段四）
+
+```powershell
+pip install -r requirements-dev.txt
+
+ruff format .          # 格式化
+ruff check .           # 静态检查
+mypy .                 # 类型检查
+python generate_cheatsheet.py   # 重新生成 docs/CHEATSHEET.md
 ```
 
 ## Windows 终端与中文输出
@@ -86,13 +100,17 @@ design-patterns-23/
 ├── TASKS.md
 ├── CHANGELOG.md
 ├── test_patterns.py
+├── learn.py
+├── generate_cheatsheet.py
+├── pyproject.toml
 ├── run_all.py
 ├── .github/workflows/ci.yml
 ├── docs/
 │   ├── PATTERNS_COMPARE.md
 │   ├── STDLIB_MAPPING.md
 │   ├── STUDY.md
-│   └── UML.md
+│   ├── UML.md
+│   └── CHEATSHEET.md
 ├── 01_singleton.py
 ├── ...
 └── 23_visitor.py
@@ -108,6 +126,7 @@ design-patterns-23/
 | [docs/STDLIB_MAPPING.md](docs/STDLIB_MAPPING.md) | 与 Python 标准库对照 |
 | [docs/STUDY.md](docs/STUDY.md) | 学习路径与自测题 |
 | [docs/UML.md](docs/UML.md) | 23 个模式 Mermaid 类图索引 |
+| [docs/CHEATSHEET.md](docs/CHEATSHEET.md) | 模式速查表（自动生成） |
 
 ## 说明
 

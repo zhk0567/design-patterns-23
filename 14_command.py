@@ -76,5 +76,6 @@ def demo() -> None:
     history.undo()
     print(f"[Command] 撤销后: {editor.content!r}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

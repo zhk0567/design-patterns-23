@@ -61,5 +61,6 @@ def demo() -> None:
     root.add(File("README.md"))
     print(f"[Composite]\n{root.display()}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

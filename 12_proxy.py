@@ -54,5 +54,6 @@ def demo() -> None:
     print(proxy.display())
     print(proxy.display())
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()

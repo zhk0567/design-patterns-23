@@ -77,5 +77,6 @@ def demo() -> None:
     )
     print(f"[Builder] {req.describe()}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     demo()
