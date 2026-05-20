@@ -14,12 +14,13 @@ GoF 23 种设计模式 Python 扁平项目 — 进度跟踪。已完成项来自
 - [x] `run_all.py` 全量运行 23 个示例（已本地验证通过）
 - [x] README 模式索引表与运行说明
 - [x] Windows 控制台编码兼容（去除 ¥/emoji，`run_all.py` UTF-8 重配置）
+- [x] Git 初始化与首次提交，推送到 `git@github.com:zhk0567/design-patterns-23.git`（`main` 分支）
 
 ---
 
 ## 一、巩固与质量（建议优先）
 
-- [ ] **Git 初始化与首次提交** — `git init`，提交全部项目文件，便于版本对比与回滚
+- [x] **Git 初始化与首次提交** — 已推送至 GitHub `main` 分支
 - [ ] **README 补充 Windows 编码说明** — 明确 `PYTHONIOENCODING=utf-8`、PowerShell 乱码处理步骤
 - [ ] **为每个模式补充「反例/误用」注释** — 如单例线程安全、装饰器 vs 继承等，每文件 3～5 行
 - [ ] **添加 `test_patterns.py`（可选 pytest）** — 对每个 `demo()` 做 smoke test（无异常、输出含模式前缀）
