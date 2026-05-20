@@ -6,9 +6,10 @@ import ast
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
+PATTERNS_DIR = ROOT / "patterns"
 OUTPUT = ROOT / "docs" / "CHEATSHEET.md"
-PATTERN_FILES = sorted(ROOT.glob("[0-9][0-9]_*.py"))
+PATTERN_FILES = sorted(PATTERNS_DIR.glob("[0-9][0-9]_*.py"))
 
 
 def _field(doc: str, label: str) -> str:
@@ -21,8 +22,9 @@ def _parse_file(path: Path) -> dict[str, str]:
     tree = ast.parse(source)
     doc = ast.get_docstring(tree) or ""
     first_line = doc.strip().split("\n")[0] if doc else path.stem
+    rel = path.relative_to(ROOT).as_posix()
     return {
-        "file": path.name,
+        "file": rel,
         "title": first_line,
         "intent": _field(doc, "意图"),
         "use_case": _field(doc, "适用"),
@@ -33,8 +35,8 @@ def _render(rows: list[dict[str, str]]) -> str:
     lines = [
         "# 设计模式速查表",
         "",
-        "> 由 `generate_cheatsheet.py` 从各模块 docstring 自动生成，请勿手改。",
-        "> 重新生成: `python generate_cheatsheet.py`",
+        "> 由 `scripts/generate_cheatsheet.py` 从各模块 docstring 自动生成，请勿手改。",
+        "> 重新生成: `python scripts/generate_cheatsheet.py`",
         "",
         "| # | 文件 | 模式 | 意图 | 适用 |",
         "|---|------|------|------|------|",
@@ -49,8 +51,8 @@ def _render(rows: list[dict[str, str]]) -> str:
             "## 运行",
             "",
             "```powershell",
-            "python learn.py",
-            "python run_all.py",
+            "python scripts/learn.py",
+            "python scripts/run_all.py",
             "```",
             "",
         ]

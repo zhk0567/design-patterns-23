@@ -1,26 +1,26 @@
 [project]
 name = "design-patterns-23"
-version = "0.2.0"
-description = "GoF 23 design patterns in Python (flat layout, stdlib demos)"
+version = "0.3.0"
+description = "GoF 23 design patterns in Python (stdlib demos)"
 readme = "README.md"
 requires-python = ">=3.10"
 
 [tool.ruff]
 target-version = "py310"
 line-length = 100
-src = ["."]
+src = ["patterns", "scripts", "examples"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]
 ignore = ["E501"]
 
 [tool.ruff.lint.per-file-ignores]
-"learn.py" = ["E501"]
-"generate_cheatsheet.py" = ["E501"]
+"scripts/learn.py" = ["E501"]
+"scripts/generate_cheatsheet.py" = ["E501"]
 
 [tool.mypy]
 python_version = "3.10"
-files = ["."]
+files = ["patterns", "scripts", "examples"]
 exclude = ["docs/", ".venv/"]
 warn_return_any = true
 warn_unused_ignores = true

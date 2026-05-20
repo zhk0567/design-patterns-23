@@ -1,14 +1,14 @@
-# 学习路径与自测题
+﻿# 学习路径与自测题
 
 ## 第 1 周：创建型（01–05）
 
 | 天 | 文件 | 目标 |
 |----|------|------|
-| 1 | `01_singleton.py` | 理解唯一实例与全局访问点 |
-| 2 | `02_factory_method.py` | 工厂推迟到子类 |
-| 3 | `03_abstract_factory.py` | 产品族切换 |
-| 4 | `04_builder.py` | 分步构建 |
-| 5 | `05_prototype.py` | 深拷贝 vs 浅拷贝 |
+| 1 | `patterns/01_singleton.py` | 理解唯一实例与全局访问点 |
+| 2 | `patterns/02_factory_method.py` | 工厂推迟到子类 |
+| 3 | `patterns/03_abstract_factory.py` | 产品族切换 |
+| 4 | `patterns/04_builder.py` | 分步构建 |
+| 5 | `patterns/05_prototype.py` | 深拷贝 vs 浅拷贝 |
 
 **自测**
 
@@ -33,8 +33,8 @@
 ## 验收
 
 ```powershell
-python test_patterns.py
-python run_all.py
+python scripts/test_patterns.py
+python scripts/run_all.py
 ```
 
 全部通过即完成本轮学习路径。

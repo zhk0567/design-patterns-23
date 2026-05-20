@@ -3,8 +3,14 @@
 from __future__ import annotations
 
 import asyncio
-import importlib
 import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from patterns import load  # noqa: E402
 
 ASYNC_MODULES = [
     "12_proxy",
@@ -18,7 +24,7 @@ async def _run_all() -> int:
     for name in ASYNC_MODULES:
         print(f"\n{'=' * 50}\n>>> {name} (async)\n{'=' * 50}")
         try:
-            module = importlib.import_module(name)
+            module = load(name)
             await module.demo_async()
         except Exception as exc:
             failed += 1

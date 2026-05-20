@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
-import importlib
 import sys
+from pathlib import Path
+from types import ModuleType
 
-from run_all import PATTERNS
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-# (module, English, Chinese)
+from patterns import PATTERNS, load  # noqa: E402
+
 PATTERN_META: list[tuple[str, str, str]] = [
     ("01_singleton", "Singleton", "单例"),
     ("02_factory_method", "Factory Method", "工厂方法"),
@@ -44,7 +48,7 @@ def _configure_stdio() -> None:
 
 def _print_menu() -> None:
     print("\n" + "=" * 50)
-    print("  23 种设计模式 — 交互学习 (learn.py)")
+    print("  23 种设计模式 — 交互学习 (scripts/learn.py)")
     print("=" * 50)
     for i, (mod, en, zh) in enumerate(PATTERN_META, start=1):
         print(f"  {i:2}. {mod:32} {zh} ({en})")
@@ -54,9 +58,7 @@ def _print_menu() -> None:
     print("=" * 50)
 
 
-async def _run_module_async(name: str, mode: str) -> None:
-
-    module = importlib.import_module(name)
+async def _run_module_async(module: ModuleType, mode: str) -> None:
     if mode == "async" and hasattr(module, "demo_async"):
         await module.demo_async()
     elif mode == "basic" and hasattr(module, "demo_basic"):
@@ -68,12 +70,12 @@ async def _run_module_async(name: str, mode: str) -> None:
 
 
 def _run_module(name: str, mode: str) -> None:
+    module = load(name)
     if mode == "async":
         import asyncio
 
-        asyncio.run(_run_module_async(name, mode))
+        asyncio.run(_run_module_async(module, mode))
         return
-    module = importlib.import_module(name)
     if mode == "basic" and hasattr(module, "demo_basic"):
         module.demo_basic()
     elif mode == "advanced" and hasattr(module, "demo_advanced"):
@@ -82,8 +84,7 @@ def _run_module(name: str, mode: str) -> None:
         module.demo()
 
 
-def _pick_mode(name: str) -> str:
-    module = importlib.import_module(name)
+def _pick_mode(module: ModuleType) -> str:
     has_basic = hasattr(module, "demo_basic")
     has_advanced = hasattr(module, "demo_advanced")
     has_async = hasattr(module, "demo_async")
@@ -110,11 +111,11 @@ def main() -> int:
             print("再见。")
             return 0
         if raw == "all":
-            import run_all
+            from scripts import run_all
 
             return run_all.main()
         if raw == "async":
-            import run_async_demos
+            from scripts import run_async_demos
 
             return run_async_demos.main()
         try:
@@ -128,7 +129,8 @@ def main() -> int:
 
         mod, en, zh = PATTERN_META[idx - 1]
         print(f"\n>>> {mod} — {zh} ({en})\n")
-        mode = _pick_mode(mod)
+        module = load(mod)
+        mode = _pick_mode(module)
         try:
             _run_module(mod, mode)
         except Exception as exc:

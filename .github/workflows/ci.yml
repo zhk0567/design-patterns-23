@@ -34,15 +34,15 @@ jobs:
         run: mypy .
 
       - name: Run smoke tests
-        run: python test_patterns.py
+        run: python scripts/test_patterns.py
 
       - name: Run all demos
-        run: python run_all.py
+        run: python scripts/run_all.py
 
       - name: Run async demos
-        run: python run_async_demos.py
+        run: python scripts/run_async_demos.py
 
       - name: Verify cheatsheet is up to date
         run: |
-          python generate_cheatsheet.py
+          python scripts/generate_cheatsheet.py
           git diff --exit-code docs/CHEATSHEET.md

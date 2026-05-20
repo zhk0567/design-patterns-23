@@ -1,4 +1,4 @@
-# 设计模式与主流框架对照
+﻿# 设计模式与主流框架对照
 
 说明：框架往往**组合多种模式**，下表为常见对应关系，便于从「课本示例」过渡到工程阅读。
 
@@ -45,11 +45,11 @@
 
 | 本仓库文件 | 框架阅读时可联想 |
 |------------|------------------|
-| `10_facade.py` | Spring `@Service` 下单编排 |
-| `19_observer.py` | Django Signals / Spring Events |
-| `20_state.py` | 订单状态字段 + 转移校验 |
-| `12_proxy.py` | Spring AOP 懒加载代理 |
-| `21_strategy.py` | 运费/支付 Strategy 接口多实现 |
+| `patterns/10_facade.py` | Spring `@Service` 下单编排 |
+| `patterns/19_observer.py` | Django Signals / Spring Events |
+| `patterns/20_state.py` | 订单状态字段 + 转移校验 |
+| `patterns/12_proxy.py` | Spring AOP 懒加载代理 |
+| `patterns/21_strategy.py` | 运费/支付 Strategy 接口多实现 |
 
 ## 延伸阅读
 

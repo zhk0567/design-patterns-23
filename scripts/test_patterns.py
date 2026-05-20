@@ -1,14 +1,19 @@
 """Smoke tests for all 23 design pattern demos (stdlib unittest only)."""
 
-import importlib
+from __future__ import annotations
+
 import io
 import sys
 import unittest
 from contextlib import redirect_stdout
+from pathlib import Path
 
-from run_all import PATTERNS
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-# Expected substring in demo() stdout per module
+from patterns import PATTERNS, load, unload  # noqa: E402
+
 EXPECTED_MARKERS: dict[str, str] = {
     "01_singleton": "[Singleton]",
     "02_factory_method": "[Console]",
@@ -43,9 +48,8 @@ class PatternSmokeTests(unittest.TestCase):
     def test_each_demo_runs(self) -> None:
         for name in PATTERNS:
             with self.subTest(pattern=name):
-                if name in sys.modules:
-                    del sys.modules[name]
-                module = importlib.import_module(name)
+                unload(name)
+                module = load(name)
                 buffer = io.StringIO()
                 with redirect_stdout(buffer):
                     module.demo()

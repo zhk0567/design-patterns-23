@@ -1,4 +1,4 @@
-# 设计模式面试题与参考答案
+﻿# 设计模式面试题与参考答案
 
 每模式 2～3 题，覆盖意图、区别、实战与坑。结合本仓库 `NN_*.py` 阅读。
 
@@ -9,7 +9,7 @@
 ### 01 Singleton 单例
 
 **Q1.** 单例模式解决什么问题？Python 里有哪些实现方式？  
-**A.** 保证类仅一个实例并提供全局访问。方式：`__new__` + 类变量、模块级对象、Borg 模式、`threading.Lock` 双重检查（见 `01_singleton.py`）。
+**A.** 保证类仅一个实例并提供全局访问。方式：`__new__` + 类变量、模块级对象、Borg 模式、`threading.Lock` 双重检查（见 `patterns/01_singleton.py`）。
 
 **Q2.** 单例在多线程 Web 服务中有何风险？  
 **A.** 非线程安全实现可能创建多个实例；且单例隐藏依赖、不利测试。应评估是否真需要全局唯一。
@@ -23,7 +23,7 @@
 **A.** 工厂方法用子类决定实例化哪个产品，符合开闭原则；简单工厂常集中在一个函数里，新增类型要改该函数。
 
 **Q2.** 何时用工厂方法？  
-**A.** 创建逻辑会扩展、需把「创建」与「使用」解耦时，如多种 Logger（`02_factory_method.py`）。
+**A.** 创建逻辑会扩展、需把「创建」与「使用」解耦时，如多种 Logger（`patterns/02_factory_method.py`）。
 
 ### 03 Abstract Factory 抽象工厂
 
@@ -36,7 +36,7 @@
 ### 04 Builder 建造者
 
 **Q1.** Builder 与构造函数大量可选参数相比？  
-**A.** Builder 分步清晰、易读，可保证构建顺序与合法性（`04_builder.py` HTTP 请求）。
+**A.** Builder 分步清晰、易读，可保证构建顺序与合法性（`patterns/04_builder.py` HTTP 请求）。
 
 **Q2.** 是否需要 Director？  
 **A.** 构建步骤固定且多处复用时引入 Director；否则客户端直接调 Builder 即可。
@@ -44,7 +44,7 @@
 ### 05 Prototype 原型
 
 **Q1.** 浅拷贝与深拷贝在原型模式中的影响？  
-**A.** 浅拷贝共享嵌套可变对象；应用 `copy.deepcopy`（`05_prototype.py`）。
+**A.** 浅拷贝共享嵌套可变对象；应用 `copy.deepcopy`（`patterns/05_prototype.py`）。
 
 **Q2.** 何时用原型而非 `__init__`？  
 **A.** 克隆成本高、配置复杂或需保留当前状态快照时。
@@ -72,7 +72,7 @@
 ### 08 Composite 组合
 
 **Q1.** 组合模式如何保证对叶子和容器使用一致？  
-**A.** 统一组件接口；容器实现 add 并递归处理子节点（`08_composite.py`）。
+**A.** 统一组件接口；容器实现 add 并递归处理子节点（`patterns/08_composite.py`）。
 
 **Q2.** 组合模式的代价？  
 **A.** 难以限制「仅容器才有的操作」，需在接口或类型上约束。
@@ -119,12 +119,12 @@
 **A.** 责任链可能不处理请求并传递；装饰器通常增强并传递。
 
 **Q2.** 动态责任链的价值？  
-**A.** 运行时增删处理器，如审批流（`13_chain_of_responsibility.py` advanced）。
+**A.** 运行时增删处理器，如审批流（`patterns/13_chain_of_responsibility.py` advanced）。
 
 ### 14 Command 命令
 
 **Q1.** 命令模式如何支持撤销？  
-**A.** 封装操作为对象，保存逆操作或快照，`undo()` 恢复（`14_command.py`）。
+**A.** 封装操作为对象，保存逆操作或快照，`undo()` 恢复（`patterns/14_command.py`）。
 
 **Q2.** 异步命令队列场景？  
 **A.** 命令入队后由 worker/async 执行，见 `demo_async()`。
@@ -161,7 +161,7 @@
 ### 19 Observer 观察者
 
 **Q1.** 观察者内存泄漏如何避免？  
-**A.** 取消订阅、弱引用（`19_observer.py` WeakStockMarket）、生命周期绑定。
+**A.** 取消订阅、弱引用（`patterns/19_observer.py` WeakStockMarket）、生命周期绑定。
 
 **Q2.** 观察者 vs 发布订阅（消息队列）？  
 **A.** 观察者通常进程内同步/异步调用；Pub/Sub 常跨进程解耦。

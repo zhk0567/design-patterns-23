@@ -1,7 +1,7 @@
-# 设计模式相关反模式
+﻿# 设计模式相关反模式
 
 反模式：看似在用模式，实则增加复杂度或引入新问题。  
-可运行对照见 [`99_anti_patterns.py`](../99_anti_patterns.py)。
+可运行对照见 [`patterns/99_anti_patterns.py`](../examples/99_anti_patterns.py)。
 
 | 反模式 | 表现 | 更合适的做法 |
 |--------|------|--------------|
@@ -20,13 +20,13 @@
 
 | 正例文件 | 常见反模式 |
 |----------|------------|
-| `01_singleton.py` | 非线程安全单例用于多线程 Web |
-| `09_decorator.py` | 与 Python `@decorator` 语法混为一谈 |
-| `10_facade.py` | Facade 替代所有分层 |
-| `19_observer.py` | 强引用观察者从不 unsubscribe |
+| `patterns/01_singleton.py` | 非线程安全单例用于多线程 Web |
+| `patterns/09_decorator.py` | 与 Python `@decorator` 语法混为一谈 |
+| `patterns/10_facade.py` | Facade 替代所有分层 |
+| `patterns/19_observer.py` | 强引用观察者从不 unsubscribe |
 
 运行演示：
 
 ```powershell
-python 99_anti_patterns.py
+python examples/99_anti_patterns.py
 ```
