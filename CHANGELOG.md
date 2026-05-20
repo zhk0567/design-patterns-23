@@ -2,33 +2,38 @@
 
 All notable changes to this project are documented in this file.
 
-## [Unreleased]
-
-### Changed
-
-- Reorganize repo layout: `patterns/`, `scripts/`, `examples/`; root keeps config and docs only
+## [1.0.0] - 2026-05-20
 
 ### Added
 
-- Phase 5: ecommerce scenario doc, framework mapping, interview Q&A, anti-patterns (`examples/99_anti_patterns.py`)
-- Async demos: `demo_async()` on proxy/command/observer, `run_async_demos.py`
-- Phase 4 tooling: `pyproject.toml`, `requirements-dev.txt`, `learn.py`, `generate_cheatsheet.py`, `docs/CHEATSHEET.md`
-- CI: ruff format/lint, mypy, cheatsheet drift check
-- Mermaid UML class diagrams in all 23 pattern module docstrings; `docs/UML.md` index
-- Phase 3 enhancements: thread-safe singleton, dynamic approval chain, weakref observer, PrintVisitor, interpreter multiply/subtract; `demo_basic()` / `demo_advanced()` dual entry on affected modules
+- `scripts/ecommerce_demo.py` end-to-end order flow (Facade + State + Observer)
+- `docs/PATTERN_MAP.md`, `docs/UML_ALL.md`, `docs/interview_cards.csv`
+- `README.en.md`, root shortcuts (`run_all.py`, `learn.py`, `test_patterns.py`)
+- `examples/anti_inheritance_abuse.py`, `examples/anti_singleton_god_object.py`
+- `scripts/export_interview_cards.py`, `scripts/generate_uml_page.py`
+- `scripts/test_unit_patterns.py`, `scripts/test_async_demos.py`
+- `.pre-commit-config.yaml`
+- `learn.py` category filter and module-name input
+- CI badge in README
 
-### Added (earlier)
+### Changed
 
-- Windows UTF-8 notes in README
-- `test_patterns.py` unittest smoke tests for all 23 demos
-- GitHub Actions CI (`.github/workflows/ci.yml`)
-- Docs: `docs/PATTERNS_COMPARE.md`, `docs/STDLIB_MAPPING.md`, `docs/STUDY.md`
-- Pitfall / misuse notes in each pattern module docstring
+- Project layout: `patterns/`, `scripts/`, `examples/`, `docs/`
+- `pyproject.toml` version 1.0.0; stricter mypy on `patterns.*`
+- CI runs unit tests and async demo tests
+
+## [0.3.0] - 2026-05-20
+
+### Changed
+
+- Reorganize repo layout: `patterns/`, `scripts/`, `examples/`
+
+### Added
+
+- Phase 3–5 features: async demos, interview docs, anti-patterns, tooling (ruff/mypy/learn)
 
 ## [0.1.0] - 2025-11-15
 
 ### Added
 
-- Initial flat-layout GoF 23 Python examples (`01_singleton.py` … `23_visitor.py`)
-- `run_all.py` batch runner
-- `README.md`, `TASKS.md`, `requirements.txt`, `.gitignore`
+- Initial GoF 23 Python examples and `run_all.py`

@@ -36,6 +36,12 @@ jobs:
       - name: Run smoke tests
         run: python scripts/test_patterns.py
 
+      - name: Run unit tests
+        run: python scripts/test_unit_patterns.py
+
+      - name: Run async demo tests
+        run: python scripts/test_async_demos.py
+
       - name: Run all demos
         run: python scripts/run_all.py
 

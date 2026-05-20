@@ -25,8 +25,13 @@
 | `patterns/10_facade.py` | Facade 替代所有分层 |
 | `patterns/19_observer.py` | 强引用观察者从不 unsubscribe |
 
+| `examples/anti_inheritance_abuse.py` | 配料组合导致继承爆炸 |
+| `examples/anti_singleton_god_object.py` | 单例充当全局上帝对象 |
+
 运行演示：
 
 ```powershell
 python examples/99_anti_patterns.py
+python examples/anti_inheritance_abuse.py
+python examples/anti_singleton_god_object.py
 ```

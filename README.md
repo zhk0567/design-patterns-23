@@ -1,6 +1,10 @@
 # 23 种设计模式（Python）
 
+[![CI](https://github.com/zhk0567/design-patterns-23/actions/workflows/ci.yml/badge.svg)](https://github.com/zhk0567/design-patterns-23/actions/workflows/ci.yml)
+
 GoF 23 种经典设计模式的 Python 示例。仅使用标准库，每个模式可单独运行。
+
+[English README](README.en.md)
 
 ## 目录结构
 
@@ -40,8 +44,11 @@ python patterns/01_singleton.py
 # 全部 23 个
 python scripts/run_all.py
 
-# 交互菜单
+# 交互菜单（支持分类筛选、模块名如 12_proxy）
 python scripts/learn.py
+
+# 电商端到端（Facade + State + Observer）
+python scripts/ecommerce_demo.py
 
 # 异步 demo（12 / 14 / 19）
 python scripts/run_async_demos.py
@@ -61,7 +68,10 @@ ruff format .
 ruff check .
 mypy .
 python scripts/generate_cheatsheet.py
+python scripts/test_unit_patterns.py
 ```
+
+根目录仍可使用快捷命令：`python run_all.py`、`python learn.py`。
 
 ## Windows 终端与中文输出
 
@@ -123,6 +133,9 @@ python scripts/run_all.py
 | [docs/FRAMEWORK_MAPPING.md](docs/FRAMEWORK_MAPPING.md) | Spring / Django 对照 |
 | [docs/INTERVIEW.md](docs/INTERVIEW.md) | 面试题 |
 | [docs/ANTI_PATTERNS.md](docs/ANTI_PATTERNS.md) | 反模式 |
+| [docs/PATTERN_MAP.md](docs/PATTERN_MAP.md) | 模式关系总图 |
+| [docs/UML_ALL.md](docs/UML_ALL.md) | UML 类图汇总 |
+| [docs/interview_cards.csv](docs/interview_cards.csv) | 面试题闪卡 CSV |
 | [docs/PATTERNS_COMPARE.md](docs/PATTERNS_COMPARE.md) | 模式对比 |
 | [docs/STUDY.md](docs/STUDY.md) | 学习路径 |
 

@@ -1,18 +1,15 @@
 # 后续任务清单
 
----
-
-## 已完成
-
-- [x] MVP ~ 阶段五（示例、文档、工具链、进阶专题）
-- [x] **目录整理**：`patterns/`、`scripts/`、`examples/`、`docs/`
+> 当前计划内任务已全部完成。新想法可追加到下方。
 
 ---
 
-## 可选后续
+## 可选增强
 
-- [ ] 电商场景可运行端到端编排脚本
-- [ ] 面试题 Anki / 闪卡导出
+- [ ] 电商脚本扩展：接入 `13_chain` 大额审批、`14_command` 取消订单
+- [ ] GitHub Release 附件：上传 `interview_cards.csv` 与 `UML_ALL.md` 到 Releases
+- [ ] 为 `patterns/` 增加 `py.typed` 并发布到 PyPI（若需 pip 安装）
+- [ ] 中英文 docstring 对照（国际化）
 
 ---
 
@@ -20,7 +17,8 @@
 
 ```powershell
 Set-Location f:\commercial\design-patterns-23
+python scripts/ecommerce_demo.py
 python scripts/learn.py
 python scripts/run_all.py
-python patterns/01_singleton.py
+pre-commit run --all-files
 ```

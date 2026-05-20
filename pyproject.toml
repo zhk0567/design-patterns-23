@@ -1,6 +1,6 @@
 [project]
 name = "design-patterns-23"
-version = "0.3.0"
+version = "1.0.0"
 description = "GoF 23 design patterns in Python (stdlib demos)"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -17,6 +17,9 @@ ignore = ["E501"]
 [tool.ruff.lint.per-file-ignores]
 "scripts/learn.py" = ["E501"]
 "scripts/generate_cheatsheet.py" = ["E501"]
+"run_all.py" = ["F401"]
+"learn.py" = ["F401"]
+"test_patterns.py" = ["F401"]
 
 [tool.mypy]
 python_version = "3.10"
@@ -27,3 +30,8 @@ warn_unused_ignores = true
 disallow_untyped_defs = false
 check_untyped_defs = true
 ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "patterns.*"
+disallow_untyped_defs = true
+warn_return_any = false

@@ -31,6 +31,7 @@ from __future__ import annotations
 import asyncio
 import weakref
 from abc import ABC, abstractmethod
+from collections.abc import Awaitable, Callable
 
 
 class Observer(ABC):
@@ -84,17 +85,20 @@ class Investor(Observer):
         print(f"[Observer] {self.name} 收到 {symbol} 报价: {price:.2f} 元")
 
 
+OrderHandler = Callable[[str, str], Awaitable[None] | None]
+
+
 class AsyncOrderBus:
     """异步发布订单状态：并发通知所有订阅者。"""
 
     def __init__(self) -> None:
-        self._handlers: list = []
+        self._handlers: list[OrderHandler] = []
 
-    def subscribe(self, handler) -> None:
+    def subscribe(self, handler: OrderHandler) -> None:
         self._handlers.append(handler)
 
     async def publish(self, order_id: str, status: str) -> None:
-        async def _notify(h) -> None:
+        async def _notify(h: OrderHandler) -> None:
             if asyncio.iscoroutinefunction(h):
                 await h(order_id, status)
             else:

@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff-format
+      - id: ruff
+        args: [--fix]
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy .
+        language: system
+        pass_filenames: false
+      - id: test-patterns
+        name: test patterns smoke
+        entry: python scripts/test_patterns.py
+        language: system
+        pass_filenames: false
+      - id: test-unit
+        name: test unit patterns
+        entry: python scripts/test_unit_patterns.py
+        language: system
+        pass_filenames: false
