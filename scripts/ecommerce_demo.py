@@ -4,12 +4,11 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from types import ModuleType
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-
-from types import ModuleType
 
 from patterns import load  # noqa: E402
 
@@ -67,7 +66,7 @@ def _run_command_cancel(
 ) -> None:
     print(f"\n{'=' * 50}\n[Ecommerce] Command — 取消订单（可撤销）\n{'=' * 50}")
 
-    class CancelOrderCommand(cmd_mod.Command):  # type: ignore[misc, name-defined]
+    class CancelOrderCommand(cmd_mod.Command):  # type: ignore[name-defined]
         def __init__(self, tracked: TrackedOrder) -> None:
             self._tracked = tracked
 
