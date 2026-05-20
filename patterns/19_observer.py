@@ -8,6 +8,10 @@
 - 订阅后从不取消，造成内存泄漏（demo_advanced 演示 weakref 清理）。
 - 通知顺序依赖隐式假设，多个观察者相互影响。
 
+English (Observer):
+- Intent: Notify dependents automatically on state change.
+- Use when: Events, stock ticks, MVC updates.
+- Pitfalls: Notification loops; memory leaks without unsubscribe.
 类图 (Mermaid):
     classDiagram
         class Observer { <<abstract>> +update() }

@@ -1,9 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "design-patterns-23"
-version = "1.0.0"
+version = "1.1.0"
 description = "GoF 23 design patterns in Python (stdlib demos)"
 readme = "README.md"
 requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "zhk0567" }]
+keywords = ["design-patterns", "gof", "python", "education"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Education",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/zhk0567/design-patterns-23"
+Repository = "https://github.com/zhk0567/design-patterns-23"
+
+[tool.hatch.build.targets.wheel]
+packages = ["patterns"]
 
 [tool.ruff]
 target-version = "py310"
@@ -17,6 +41,7 @@ ignore = ["E501"]
 [tool.ruff.lint.per-file-ignores]
 "scripts/learn.py" = ["E501"]
 "scripts/generate_cheatsheet.py" = ["E501"]
+"scripts/inject_english_docstrings.py" = ["E501"]
 "run_all.py" = ["F401"]
 "learn.py" = ["F401"]
 "test_patterns.py" = ["F401"]

@@ -8,6 +8,10 @@
 - 含文件句柄、网络连接等不可克隆资源时直接 copy。
 - 原型注册表过大且从不淘汰，造成内存压力。
 
+English (Prototype):
+- Intent: Clone existing instances instead of constructing from scratch.
+- Use when: Expensive setup, document drafts.
+- Pitfalls: Shallow copy sharing mutable state; cloning non-cloneable resources.
 类图 (Mermaid):
     classDiagram
         class Document {

@@ -8,6 +8,10 @@
 - 每条规则一个类导致类爆炸，维护困难。
 - 解释执行性能差却用于高频热点路径。
 
+English (Interpreter):
+- Intent: Define grammar and interpret sentences in the language.
+- Use when: Simple DSLs, rule expressions.
+- Pitfalls: Complex grammar; poor performance on hot paths.
 类图 (Mermaid):
     classDiagram
         class Expression { <<abstract>> +interpret() }

@@ -8,6 +8,10 @@
 - 原发器对外暴露过多内部字段，破坏封装。
 - 持久化备忘录未考虑版本迁移与安全（勿 pickle 不可信数据）。
 
+English (Memento):
+- Intent: Capture and restore internal state without breaking encapsulation.
+- Use when: Editor undo, save games.
+- Pitfalls: Huge history; unsafe pickle of mementos.
 类图 (Mermaid):
     classDiagram
         class EditorMemento {

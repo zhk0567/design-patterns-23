@@ -8,6 +8,10 @@
 - 享元池无上限且不淘汰，内存泄漏式膨胀。
 - 对象数量不多、创建成本极低时引入享元得不偿失。
 
+English (Flyweight):
+- Intent: Share intrinsic state to support many fine-grained objects.
+- Use when: Text glyphs, map tiles.
+- Pitfalls: Extrinsic state inside flyweight; unbounded pool.
 类图 (Mermaid):
     classDiagram
         class GlyphStyle {

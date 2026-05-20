@@ -8,6 +8,10 @@
 - 在组合树上执行仅适用于叶子的操作且未做类型检查。
 - 树过深时递归 display/遍历无节制，性能和栈溢出风险。
 
+English (Composite):
+- Intent: Treat individual objects and compositions uniformly.
+- Use when: File trees, org charts, menus.
+- Pitfalls: Leaf nodes with container-only APIs; deep recursion.
 类图 (Mermaid):
     classDiagram
         class FileSystemNode { <<abstract>> +display() }

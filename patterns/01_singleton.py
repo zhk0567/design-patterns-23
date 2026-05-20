@@ -8,6 +8,10 @@
 - 把单例当作全局变量垃圾桶，导致隐式耦合与难以测试。
 - 在不需要唯一实例时强行使用，增加复杂度。
 
+English (Singleton):
+- Intent: Ensure a class has only one instance and a global access point.
+- Use when: Shared config, loggers, connection pools.
+- Pitfalls: Not thread-safe; god-object singleton; unnecessary complexity.
 类图 (Mermaid):
     classDiagram
         class AppConfig {

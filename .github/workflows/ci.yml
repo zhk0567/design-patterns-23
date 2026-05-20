@@ -42,6 +42,14 @@ jobs:
       - name: Run async demo tests
         run: python scripts/test_async_demos.py
 
+      - name: Run ecommerce demo test
+        run: python scripts/test_ecommerce_demo.py
+
+      - name: Verify package install
+        run: |
+          pip install -e .
+          python -c "from patterns import load; assert load('01_singleton')"
+
       - name: Run all demos
         run: python scripts/run_all.py
 

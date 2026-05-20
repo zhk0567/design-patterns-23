@@ -8,6 +8,10 @@
 - 建造步骤无顺序约束却分散在多处，易出现非法中间状态。
 - 与构造函数可选参数堆砌仅换了一种复杂形式。
 
+English (Builder):
+- Intent: Separate construction of a complex object from its representation.
+- Use when: HTTP requests, SQL, stepwise configs.
+- Pitfalls: Over-engineering simple objects; invalid partial states.
 类图 (Mermaid):
     classDiagram
         class HttpRequest {

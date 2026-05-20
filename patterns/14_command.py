@@ -8,6 +8,10 @@
 - 撤销栈无界增长，长时间编辑导致内存占用过高。
 - 未保存足够上下文导致 undo 后状态不一致。
 
+English (Command):
+- Intent: Encapsulate a request as an object (undo, queue).
+- Use when: Undo/redo, job queues.
+- Pitfalls: Fat commands; unbounded undo stack.
 类图 (Mermaid):
     classDiagram
         class Command { <<abstract>> +execute() +undo() }

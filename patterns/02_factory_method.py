@@ -8,6 +8,10 @@
 - 产品类型很少却引入大量工厂子类，过度设计。
 - 客户端仍依赖具体工厂类而非抽象工厂接口。
 
+English (Factory Method):
+- Intent: Let subclasses decide which class to instantiate.
+- Use when: Product families grow (loggers, exporters).
+- Pitfalls: Confused with simple factory; too many factory subclasses.
 类图 (Mermaid):
     classDiagram
         class Logger { <<abstract>> +log() }

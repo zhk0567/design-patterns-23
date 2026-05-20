@@ -8,6 +8,10 @@
 - 用继承层层子类导致组合爆炸时仍不用装饰器。
 - 装饰顺序影响语义时未文档化（如先打折再加料）。
 
+English (Decorator):
+- Intent: Attach responsibilities dynamically without subclass explosion.
+- Use when: Coffee add-ons, stream wrappers.
+- Pitfalls: vs Python @decorator syntax; order of wrappers matters.
 类图 (Mermaid):
     classDiagram
         class Coffee { <<abstract>> +cost() +description() }

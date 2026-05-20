@@ -8,6 +8,10 @@
 - 处理器过多且每个都访问数据库，性能链过长。
 - 动态改链顺序未通知调用方，行为不可预测。
 
+English (Chain of Responsibility):
+- Intent: Pass a request along a chain until someone handles it.
+- Use when: Approval flows, middleware, filters.
+- Pitfalls: Silent drop at chain end; performance chains.
 类图 (Mermaid):
     classDiagram
         class Handler { <<abstract>> +handle() +set_next() }

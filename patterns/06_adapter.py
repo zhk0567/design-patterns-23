@@ -8,6 +8,10 @@
 - 适配层堆积过多业务逻辑，变成「上帝适配器」。
 - 双向适配未理清调用方向，维护困难。
 
+English (Adapter):
+- Intent: Convert one interface into another clients expect.
+- Use when: Legacy SDKs, third-party APIs.
+- Pitfalls: Confused with Decorator; god adapter.
 类图 (Mermaid):
     classDiagram
         class PaymentGateway { <<abstract>> +pay() }

@@ -8,6 +8,10 @@
 - 虚拟代理未处理并发下重复创建真实对象。
 - 远程代理忽略超时、重试与序列化版本兼容。
 
+English (Proxy):
+- Intent: Control access to another object (lazy load, protection).
+- Use when: Heavy images, remote services.
+- Pitfalls: vs Decorator; race on lazy init.
 类图 (Mermaid):
     classDiagram
         class RealImage {

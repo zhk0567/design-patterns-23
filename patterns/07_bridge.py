@@ -8,6 +8,10 @@
 - 与策略模式混淆：桥接强调抽象维度稳定、实现可替换；策略强调算法互换。
 - 过度拆分导致跳转层次过多，阅读成本高。
 
+English (Bridge):
+- Intent: Split abstraction and implementation so both vary independently.
+- Use when: Shape x renderer, message x channel.
+- Pitfalls: Confused with Strategy; too many layers.
 类图 (Mermaid):
     classDiagram
         class Renderer { <<abstract>> +render_circle() }

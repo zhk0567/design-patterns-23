@@ -8,6 +8,10 @@
 - 产品族频繁增减导致抽象工厂接口臃肿。
 - 与工厂方法边界不清：抽象工厂管「一族」，工厂方法管「一种」。
 
+English (Abstract Factory):
+- Intent: Create families of related products without naming concrete classes.
+- Use when: Switching UI themes, platform kits.
+- Pitfalls: Overkill for single products; interface bloat.
 类图 (Mermaid):
     classDiagram
         class Button { <<abstract>> +render() }

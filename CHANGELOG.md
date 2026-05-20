@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.1.0] - 2026-05-20
+
+### Added
+
+- Ecommerce demo: Chain approval + Command cancel/undo
+- English docstring blocks in all 23 pattern modules
+- `patterns/py.typed`, hatchling packaging (`pip install -e .`)
+- `.github/workflows/release.yml` uploads CSV, UML_ALL, CHEATSHEET on tag
+- `docs/PYPI.md`, `scripts/test_ecommerce_demo.py`
+
 ## [1.0.0] - 2026-05-20
 
 ### Added

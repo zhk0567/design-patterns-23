@@ -4,7 +4,7 @@
 
 GoF 23 种经典设计模式的 Python 示例。仅使用标准库，每个模式可单独运行。
 
-[English README](README.en.md)
+[English README](README.en.md) · [PyPI / 本地安装](docs/PYPI.md)
 
 ## 目录结构
 
@@ -25,7 +25,7 @@ design-patterns-23/
 │   ├── test_patterns.py
 │   └── ...
 ├── examples/              # 反模式等补充示例
-│   └── 99_anti_patterns.py
+├── patterns/py.typed      # PEP 561 类型标记
 └── docs/                  # 文档与速查表
 ```
 

@@ -8,6 +8,10 @@
 - 对外暴露内部列表引用，破坏封装。
 - 已有 `__iter__` 可简洁实现时仍手写冗长 Iterator 类（本示例为教学目的）。
 
+English (Iterator):
+- Intent: Sequential access without exposing internal structure.
+- Use when: Custom collections, paging.
+- Pitfalls: Concurrent modification; leaking internals.
 类图 (Mermaid):
     classDiagram
         class BookShelf {

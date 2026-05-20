@@ -8,6 +8,10 @@
 - 访问者方法过多，每增加一种操作就要改访问者接口。
 - 元素层次未稳定就引入访问者，双分派复杂度得不偿失。
 
+English (Visitor):
+- Intent: Add operations on elements without changing their classes.
+- Use when: AST walks, file trees, reports.
+- Pitfalls: New element types break all visitors; interface growth.
 类图 (Mermaid):
     classDiagram
         class FileNode {

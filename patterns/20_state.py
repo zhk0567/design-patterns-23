@@ -8,6 +8,10 @@
 - 与策略模式混淆：状态通常在内部自动切换；策略常由客户端选择。
 - 非法转移未统一处理，散落在各状态类 if 分支。
 
+English (State):
+- Intent: Change behavior when internal state changes.
+- Use when: Order workflows, TCP states.
+- Pitfalls: vs Strategy; state class explosion.
 类图 (Mermaid):
     classDiagram
         class OrderState { <<abstract>> +pay() +ship() }

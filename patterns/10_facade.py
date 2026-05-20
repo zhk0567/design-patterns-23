@@ -8,6 +8,10 @@
 - 客户端绕过门面直接调用子系统，破坏封装意图。
 - 子系统本可独立演进却被门面绑死无法替换。
 
+English (Facade):
+- Intent: Provide a simple interface to a complex subsystem.
+- Use when: Checkout flows, boot sequences.
+- Pitfalls: God facade; clients bypass facade.
 类图 (Mermaid):
     classDiagram
         class Inventory { +reserve() }

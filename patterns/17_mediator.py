@@ -8,6 +8,10 @@
 - 同事类之间仍偷偷直接引用，模式名存实亡。
 - 简单两方通信也引入中介，增加间接层。
 
+English (Mediator):
+- Intent: Centralize how colleagues interact.
+- Use when: Chat rooms, form coordination.
+- Pitfalls: God mediator; hidden direct references.
 类图 (Mermaid):
     classDiagram
         class ChatRoom {

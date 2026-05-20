@@ -8,6 +8,10 @@
 - 用继承固定流程导致组合场景难以复用（可考虑 hooks + 组合）。
 - 父类钩子方法默认可空但子类假设已执行某步骤，产生隐含顺序依赖。
 
+English (Template Method):
+- Intent: Define algorithm skeleton; subclasses fill steps.
+- Use when: Export pipelines, game turns.
+- Pitfalls: Rigid inheritance; hidden step dependencies.
 类图 (Mermaid):
     classDiagram
         class DataExporter { <<abstract>> +export() #build_header() #build_body() +build_footer() }
